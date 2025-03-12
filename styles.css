@@ -1,0 +1,28 @@
+#header {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+#search-container {
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+#crypto-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.crypto-column {
+    border: 1px solid #ddd;
+    padding: 15px;
+    min-width: 200px;
+    background: #f9f9f9;
+}
