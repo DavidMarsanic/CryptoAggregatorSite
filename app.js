@@ -62,6 +62,13 @@ const cryptoData = {
     }
 };
 
+document.addEventListener("keydown", function (event) {
+    if (event.key === "/" && document.activeElement !== document.getElementById("cryptoInput")) {
+        event.preventDefault(); // Prevent typing "/" in the input
+        document.getElementById("cryptoInput").focus();
+    }
+});
+
 // Function to add a crypto column
 function addCryptoColumn() {
     const symbol = document.getElementById("cryptoInput").value.toUpperCase().trim();
@@ -114,3 +121,4 @@ function addCryptoColumn() {
     container.appendChild(div);
     document.getElementById("cryptoInput").value = ""; // Clear input after adding
 }
+
