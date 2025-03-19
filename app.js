@@ -1,4 +1,3 @@
-// Dummy crypto data
 const cryptoData = {
     BTC: {
         name: "Bitcoin",
@@ -69,6 +68,13 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+document.getElementById("cryptoInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") { // Check if Enter is pressed
+        event.preventDefault(); // Prevents accidental form submission
+        addCryptoColumn(); // Calls the same function as the button
+    }
+});
+
 // Function to add a crypto column
 function addCryptoColumn() {
     const symbol = document.getElementById("cryptoInput").value.toUpperCase().trim();
@@ -121,4 +127,3 @@ function addCryptoColumn() {
     container.appendChild(div);
     document.getElementById("cryptoInput").value = ""; // Clear input after adding
 }
-
