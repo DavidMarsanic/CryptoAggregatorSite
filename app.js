@@ -75,18 +75,30 @@ document.getElementById("cryptoInput").addEventListener("keypress", function (ev
     }
 });
 
+// Function to display a non-intrusive error message
+function showError(message) {
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.textContent = message;
+    errorMessage.style.display = "block";
+
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+        errorMessage.style.display = "none";
+    }, 3000);
+}
+
 // Function to add a crypto column
 function addCryptoColumn() {
     const symbol = document.getElementById("cryptoInput").value.toUpperCase().trim();
     const data = cryptoData[symbol];
 
     if (!symbol) {
-        alert("Please enter a crypto symbol.");
+        showError("Please enter a crypto symbol.");
         return;
     }
 
     if (!data) {
-        alert("Crypto not found.");
+        showError("Crypto not found. Please enter a valid symbol (e.g., BTC, ETH, SOL).");
         return;
     }
 
@@ -94,7 +106,7 @@ function addCryptoColumn() {
 
     // Check if the crypto is already displayed
     if (document.getElementById(`crypto-${symbol}`)) {
-        alert(`${symbol} is already displayed.`);
+        showError(`${symbol} is already displayed.`);
         return;
     }
 
