@@ -139,3 +139,4 @@ function addCryptoColumn() {
     container.appendChild(div);
     document.getElementById("cryptoInput").value = ""; // Clear input after adding
 }
+

@@ -1,25 +1,13 @@
+require("dotenv").config(); // Load .env variables
 const express = require("express");
-const axios = require("axios");
-require("dotenv").config();
 
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 
-app.get("/crypto/:symbol", async (req, res) => {
-    try {
-        const symbol = req.params.symbol.toUpperCase();
-        const response = await axios.get(
-            "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest",
-            {
-                params: { symbol, convert: "USD" },
-                headers: { "X-CMC_PRO_API_KEY": process.env.CMC_API_KEY },
-            }
-        );
+// Load API Key from .env
+const API_KEY = process.env.CMC_API_KEY;
 
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ error: "Error fetching data" });
-    }
-});
+console.log("API Key from .env:", API_KEY); // ✅ Print API Key to terminal
 
+// Start server
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
